@@ -16,7 +16,7 @@ docstrings there for the precise numbers. Canvas is 1920x1080 unless noted.
 | `gameplay_framed` | framed with the game | content game, text_key title | game, camera, chat |
 | `react` | framed with the video window | content window, text_key react | window, camera, chat |
 | `camera_full` | Camera fills the canvas | `camera` (camera), `lower_third` (false), `pill_key` (title) | camera |
-| `just_chatting` | Camera big in a frame, chat column, caption and socials | `text_key` (title); falls back to camera_full + lower third without chat | camera, chat |
+| `just_chatting` | Camera big in a frame, chat column, caption and socials | `text_key` (title); without a chat source it becomes camera_full + lower third showing the same `text_key` | camera, chat |
 | `side_by_side` | Two equal 16:9 boxes, heading above, footer below | `left` (window), `right` (camera), `text_key` (title) | both |
 | `starting` | Brand, big headline, countdown, socials | `countdown_min` (5), `text_key` (starting), `mic` (false) | none |
 | `brb` | Brand, headline, socials | `countdown_min` (0), `text_key` (brb) | none |
@@ -27,10 +27,17 @@ On a vertical canvas (`"canvas": [1080, 1920]`) only `camera_full`, `vertical_sp
 `fullscreen_pip`, `screen_focus` and the message screens apply. OBS has one canvas per profile: if a
 client needs horizontal and vertical, make two kits (two profiles and collections).
 
+## Options every preset accepts
+
+- `"live": false` on a scene of a `"mode": "both"` kit: the scene is for recordings, so no live badge.
+- `"badge": false`: drop the live badge from this scene only.
+- `"alerts": false`: keep the alerts source out of this scene.
+
 ## Recipes by use
 
 Pick, then trim to what the user will really switch to.
 
+- **Live and recorded in one kit** (`"mode": "both"`): mark the recording-only scenes with `"live": false`.
 - **Recorded course or tutorial**: `tutorial` (main), `screen_focus` (details), `camera_full` (intro,
   explanations). No waiting screens. Desktop audio off. 30 fps.
 - **Live class or webinar**: `starting`, `tutorial` or `framed` with `content: screen`, `camera_full`
@@ -87,7 +94,9 @@ scene by hand. Omit `preset` and give `slots`, `bg` and/or `fg`:
 }
 ```
 
-Rules: `rect` is `[x, y, w, h]` inside the canvas; frames use the same rect as the slot they surround;
+Rules: every `source` must exist. `chat` and `alerts` only exist once they have a `url`: a custom scene
+that places them before the user has a widget URL fails the build with "not defined in 'sources'".
+Until then, use a preset (they leave the chat out on their own) or omit that slot. `rect` is `[x, y, w, h]` inside the canvas; frames use the same rect as the slot they surround;
 `fit: cover` for cameras, `contain` for screens/games/videos; `z: over` only for things that must sit
 above a full-screen content plus its foreground layer (a corner camera, a chat over a game). Keep
 40 px margins, 16:9 content boxes and 4:3 or 16:9 camera boxes. You can also start from a preset and

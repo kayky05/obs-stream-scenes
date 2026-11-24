@@ -29,7 +29,7 @@ inside them). `body.frozen` is set during previews: stop CSS animations there.
 
 | Element | Markup | Notes |
 | ------- | ------ | ----- |
-| backdrop | `.backdrop` (full canvas) | Only in background layers. Paint it in `THEME.backdrop()`. Hints from presets: `e.glow` (`left`/`right`/`center`: where the content is not) and `e.rail_x` (a free vertical lane beside the text column, or null). |
+| backdrop | `.backdrop` (full canvas) | Only in background layers. Paint it in `THEME.backdrop()`. Hints from presets: `e.mood` (`waiting` on starting/brb/ending, where the background can be the show; `content` behind a game, screen or camera, where it must stay quiet), `e.glow` (`left`/`right`/`center`: where the content is not) and `e.rail_x` (a free vertical lane beside the text column, or null). `ctx.data.scene` has the scene id if you need finer control. |
 | frame | `.frame` | Sits under a captured box (camera, screen, game), `--frame-pad` larger on each side. What shows is only its edge, so style it as a border/outline/glow. The capture covers the middle. |
 | panel | `.panel` | Box under the chat or another widget. Translucent works well. |
 | brand | `.brand.lg/.md/.sm` (+`.center`) containing `.logo` (img) or `.wordmark`, `.eyebrow`, `.product`, `.sub` | Size the pieces per variant. |

@@ -184,7 +184,7 @@ def camera_full(scene: dict, ctx: dict) -> dict:
 def just_chatting(scene: dict, ctx: dict) -> dict:
     """Camera large in a frame, chat in the side column."""
     if "chat" not in ctx["sources"]:
-        return camera_full({"lower_third": True, **scene}, ctx)
+        return camera_full({"lower_third": True, "pill_key": scene.get("text_key", "title"), **scene}, ctx)
     cw, ch = ctx["canvas"]
     cam = r(40, 60, 1408, 792)
     col_x = 40 + 1408 + 40
@@ -289,6 +289,7 @@ PRESETS = {
     "vertical_split": vertical_split,
 }
 
+WAITING = {"starting", "brb", "ending", "message"}
 VERTICAL_OK = {"camera_full", "vertical_split", "starting", "brb", "ending", "message", "fullscreen_pip", "screen_focus"}
 
 
@@ -300,6 +301,8 @@ def expand(scene: dict, ctx: dict) -> dict:
                 "mic": scene.get("mic", True), "restart": scene.get("restart", False)}
     if preset not in PRESETS:
         raise ValueError(f"scene {scene.get('id')!r}: unknown preset {preset!r}; options: {', '.join(sorted(PRESETS))}")
+    # a "both" kit mixes live and recorded scenes: "live": false on a scene drops its live badge
+    ctx = {**ctx, "live": bool(scene.get("live", ctx["live"]))}
     cw, ch = ctx["canvas"]
     if ch > cw and preset not in VERTICAL_OK:
         raise ValueError(f"scene {scene.get('id')!r}: preset {preset!r} is built for 16:9; on a vertical canvas use one of {sorted(VERTICAL_OK)} or custom slots")
@@ -311,4 +314,13 @@ def expand(scene: dict, ctx: dict) -> dict:
         extra = scene.get(f"extra_{layer}")
         if extra:
             out[layer] = (out[layer] or ([{"type": "backdrop", "rail_x": None}] if layer == "bg" else [])) + extra
+    if scene.get("badge") is False:
+        for layer in ("bg", "fg"):
+            if out[layer]:
+                out[layer] = [e for e in out[layer] if e.get("type") != "badge"] or None
+    # tells the theme whether this backdrop sits behind content (keep it quiet) or is a waiting screen (can be loud)
+    mood = "waiting" if preset in WAITING else "content"
+    for e in out["bg"] or []:
+        if e.get("type") == "backdrop":
+            e.setdefault("mood", mood)
     return out
