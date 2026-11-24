@@ -1,0 +1,49 @@
+/*
+  Theme "placa" — written for Zuuuw Academy (a real-estate SaaS teaching brokers to use the platform).
+  Study notes that drove it: premium, calm, editorial; champagne on graphite like the landing page;
+  serif italic display word, grotesk body, mono for metadata; motion that never competes with the
+  screen being taught (one slow comet on a rail, ~9 s loop).
+  It is an EXAMPLE of the theme contract, not a default. A new client gets its own theme.
+*/
+
+.backdrop .glow { position: absolute; inset: 0; }
+.backdrop .grain { position: absolute; inset: 0; opacity: .07; mix-blend-mode: overlay; pointer-events: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E"); }
+
+.frame { border-radius: 6px; border: 1px solid rgba(var(--accent-rgb), .45); background: #0f1012;
+  box-shadow: 0 0 0 6px #17181b, 0 0 0 7px rgba(var(--accent-rgb), .18), 0 30px 90px rgba(0, 0, 0, .55); }
+.panel { border-radius: 10px; background: rgba(var(--bg-rgb), .62); border: 1px solid rgba(var(--accent-rgb), .28); }
+
+.brand .wordmark { font-weight: 600; font-size: 56px; line-height: 1; letter-spacing: -0.02em; }
+.brand .eyebrow { font-family: var(--font-mono); font-size: 15px; letter-spacing: .32em; text-transform: uppercase; color: var(--accent); margin-top: 40px; }
+.brand .product { font-family: var(--font-display); font-style: italic; font-size: 118px; line-height: .95; letter-spacing: -0.02em; color: var(--accent); margin-top: 14px; }
+.brand .sub { font-size: 22px; line-height: 1.4; margin-top: 22px; color: rgba(var(--text-rgb), .72); }
+.brand.md .wordmark { font-size: 40px; } .brand.md .eyebrow { margin-top: 28px; } .brand.md .product { font-size: 84px; }
+.brand.sm .wordmark { font-size: 28px; } .brand.sm .eyebrow { font-size: 13px; margin-top: 16px; }
+
+.t.label { font-family: var(--font-mono); font-size: 17px; letter-spacing: .06em; color: var(--accent); opacity: .85; }
+.t.title { font-weight: 600; font-size: 34px; line-height: 1.15; }
+.t.caption { font-weight: 600; font-size: 26px; line-height: 1.25; }
+.t.headline { font-weight: 600; font-size: 44px; line-height: 1.1; }
+.t.display { font-family: var(--font-display); font-style: italic; font-size: 104px; line-height: 1; color: var(--accent); }
+.t.body { font-size: 22px; line-height: 1.4; color: rgba(var(--text-rgb), .72); }
+
+.rule { height: 1px; background: linear-gradient(90deg, rgba(var(--accent-rgb), 0), rgba(var(--accent-rgb), .7), rgba(var(--accent-rgb), 0)); }
+.foot, .socials { font-family: var(--font-mono); font-size: 15px; letter-spacing: .28em; text-transform: uppercase; color: rgba(var(--accent-rgb), .7); }
+.socials { letter-spacing: .14em; text-transform: none; font-size: 16px; }
+.socials .sep::before { content: "·"; margin: 0 .9em; }
+.dot { display: inline-block; width: 8px; height: 8px; border-radius: 50%; background: var(--accent); box-shadow: 0 0 12px var(--accent); flex: none; }
+.foot .dot { margin-right: 14px; vertical-align: middle; }
+
+.pill { gap: 14px; padding: 12px 22px 12px 18px; border-radius: 999px; background: rgba(var(--bg-rgb), .86);
+  border: 1px solid rgba(var(--accent-rgb), .45); box-shadow: 0 16px 40px rgba(0, 0, 0, .45); }
+.pill .label { font-family: var(--font-mono); font-size: 14px; letter-spacing: .28em; text-transform: uppercase; color: var(--accent); flex: none; }
+.pill .ptext { font-weight: 600; font-size: 21px; }
+
+.badge { gap: 10px; padding: 8px 14px 8px 12px; border-radius: 999px; background: rgba(var(--bg-rgb), .86); border: 1px solid rgba(255, 59, 59, .55);
+  font-family: var(--font-mono); font-size: 14px; letter-spacing: .24em; text-transform: uppercase; }
+.badge i { width: 9px; height: 9px; border-radius: 50%; background: var(--live); box-shadow: 0 0 12px var(--live); animation: placa-pulse 1.6s ease-in-out infinite; }
+.frozen .badge i { animation: none; }
+@keyframes placa-pulse { 50% { opacity: .35; } }
+
+.countdown { font-family: var(--font-mono); font-size: 88px; letter-spacing: .06em; }

@@ -1,0 +1,63 @@
+/*
+  Theme "arcade" — an EXAMPLE for a fictional competitive-FPS streamer ("NOVAPLAYS").
+  Study notes that drove it: audience 16-24, Valorant/CS clips, channel art in cyan + magenta on
+  near-black, angular HUD language from the games themselves, fast cuts. So: clipped corners instead
+  of rounded ones, condensed uppercase type, a perspective grid that scrolls, scanlines, glitchy
+  offset on big headlines. Loud on the waiting screens, quiet around the gameplay.
+  It shows how far a theme can move away from "placa"; a new client still gets its own.
+*/
+
+:root { --frame-pad: 8px; --cut: 18px; }
+
+.backdrop { background: radial-gradient(120% 80% at 50% 120%, rgba(var(--accent-2-rgb), .22), transparent 60%), var(--bg); }
+.backdrop .grid { position: absolute; left: -30%; right: -30%; bottom: 0; height: 46%; transform: perspective(420px) rotateX(55deg); transform-origin: 50% 100%;
+  background-image: linear-gradient(rgba(var(--accent-rgb), .5) 2px, transparent 2px), linear-gradient(90deg, rgba(var(--accent-rgb), .5) 2px, transparent 2px);
+  background-size: 64px 64px; mask-image: linear-gradient(to top, #000 25%, transparent 95%); -webkit-mask-image: linear-gradient(to top, #000 25%, transparent 95%);
+  animation: arcade-grid 2.4s linear infinite; }
+@keyframes arcade-grid { to { background-position: 0 64px, 0 0; } }
+.backdrop .scan { position: absolute; inset: 0; pointer-events: none; opacity: .18;
+  background: repeating-linear-gradient(to bottom, rgba(0, 0, 0, .9) 0 1px, transparent 1px 3px); }
+.frozen .backdrop .grid { animation: none; }
+
+.frame { background: rgba(var(--accent-rgb), .9); border: none;
+  clip-path: polygon(var(--cut) 0, 100% 0, 100% calc(100% - var(--cut)), calc(100% - var(--cut)) 100%, 0 100%, 0 var(--cut));
+  filter: drop-shadow(0 0 18px rgba(var(--accent-rgb), .55)); }
+.frame::after { content: ""; position: absolute; inset: 3px; background: var(--bg);
+  clip-path: polygon(var(--cut) 0, 100% 0, 100% calc(100% - var(--cut)), calc(100% - var(--cut)) 100%, 0 100%, 0 var(--cut)); }
+.panel { background: rgba(var(--bg-rgb), .78); border-left: 3px solid var(--accent-2); }
+
+.brand .wordmark { font-family: var(--font-display); font-weight: 700; font-size: 64px; letter-spacing: .02em; text-transform: uppercase;
+  text-shadow: 3px 0 rgba(var(--accent-2-rgb), .9), -3px 0 rgba(var(--accent-rgb), .9); }
+.brand .eyebrow { font-family: var(--font-mono); font-size: 15px; letter-spacing: .3em; text-transform: uppercase; color: var(--accent); margin-top: 18px; }
+.brand .product { font-family: var(--font-display); font-weight: 700; font-size: 96px; text-transform: uppercase; color: var(--accent); }
+.brand .sub { font-size: 20px; margin-top: 12px; color: rgba(var(--text-rgb), .7); }
+.brand.md .wordmark { font-size: 52px; } .brand.sm .wordmark { font-size: 34px; } .brand.sm .eyebrow { font-size: 12px; margin-top: 8px; }
+
+.t.label { font-family: var(--font-mono); font-size: 16px; letter-spacing: .2em; color: var(--accent-2); text-transform: uppercase; }
+.t.title, .t.caption, .t.headline { font-family: var(--font-display); font-weight: 700; text-transform: uppercase; letter-spacing: .02em; }
+.t.title { font-size: 36px; line-height: 1.05; }
+.t.caption { font-size: 28px; line-height: 1.1; }
+.t.headline { font-size: 46px; line-height: 1; }
+.t.display { font-family: var(--font-display); font-weight: 700; font-size: 112px; line-height: .95; text-transform: uppercase; color: var(--text);
+  text-shadow: 4px 0 rgba(var(--accent-2-rgb), .95), -4px 0 rgba(var(--accent-rgb), .95); }
+.t.body { font-size: 22px; color: rgba(var(--text-rgb), .7); }
+
+.rule { height: 2px; background: linear-gradient(90deg, var(--accent), var(--accent-2)); }
+.foot, .socials { font-family: var(--font-mono); font-size: 16px; letter-spacing: .18em; text-transform: uppercase; color: var(--accent); }
+.socials .sep::before { content: "//"; margin: 0 .8em; color: var(--accent-2); }
+.dot { display: inline-block; width: 10px; height: 10px; background: var(--accent-2); transform: rotate(45deg); flex: none; }
+.foot .dot { margin-right: 14px; }
+
+.pill { gap: 14px; padding: 10px 28px 10px 20px; background: var(--accent); color: var(--bg); transform: skewX(-12deg); box-shadow: 0 0 30px rgba(var(--accent-rgb), .45); }
+.pill > * { transform: skewX(12deg); }
+.pill .dot { background: var(--bg); }
+.pill .label { font-family: var(--font-mono); font-size: 14px; letter-spacing: .22em; text-transform: uppercase; font-weight: 700; flex: none; }
+.pill .ptext { font-family: var(--font-display); font-weight: 700; font-size: 22px; text-transform: uppercase; color: var(--bg); }
+
+.badge { gap: 10px; padding: 7px 14px; background: var(--live); color: #fff; font-family: var(--font-mono); font-weight: 700; font-size: 14px; letter-spacing: .24em; text-transform: uppercase; }
+.badge i { width: 8px; height: 8px; background: #fff; animation: arcade-blink 1s steps(2) infinite; }
+.frozen .badge i { animation: none; }
+@keyframes arcade-blink { 50% { opacity: 0; } }
+
+.countdown { font-family: var(--font-display); font-weight: 700; font-size: 120px; letter-spacing: .04em; color: var(--accent);
+  text-shadow: 0 0 30px rgba(var(--accent-rgb), .6); }

@@ -1,0 +1,26 @@
+{
+  "language": "pt-BR",
+  "mode": "record",
+  "brand": {
+    "name": "Zuuuw",
+    "product": "Academy",
+    "eyebrow": "Plataforma · Tutoriais",
+    "tagline": "Aprenda a usar a plataforma,\ntela por tela.",
+    "site": "zuuuw.com.br",
+    "footer_label": "Zuuuw Academy",
+    "logo": "brand/logo.svg",
+    "logo_width": 232
+  },
+  "colors": { "background": "#121315", "text": "#eef1f7", "accent": "#e8d3a6", "accent_2": "#356ef3" },
+  "fonts": { "sans": "Instrument Sans", "display": "Instrument Serif", "display_style": "italic", "display_weight": 400, "mono": "Geist Mono" },
+  "texts": { "label": "MÓDULO 01  ·  AULA 03", "title": "Cadastrando seu primeiro empreendimento" },
+  "scenes": [
+    { "id": "tutorial", "name": "Tutorial", "preset": "tutorial", "camera_side": "left", "hotkey": "Ctrl+Alt+1" },
+    { "id": "camera", "name": "Câmera cheia", "preset": "camera_full", "hotkey": "Ctrl+Alt+2" },
+    { "id": "screen", "name": "Tela cheia", "preset": "screen_focus", "camera_corner": "bottom-right", "pill_key": "title", "hotkey": "Ctrl+Alt+3" }
+  ],
+  "hotkeys": { "record": "Ctrl+Alt+R" },
+  "obs": { "fps": 30, "encoder": "nvenc", "recordings": "~/Videos/Zuuuw Academy" },
+  "devices": { "mic": ["Lark", "Hollyland", "Wireless"] },
+  "audio": { "desktop_audio": false }
+}

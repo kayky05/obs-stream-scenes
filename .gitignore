@@ -1,0 +1,10 @@
+__pycache__/
+*.pyc
+# generated inside example kits when someone builds them in place
+skills/*/examples/*/overlays/
+skills/*/examples/*/fonts/
+skills/*/examples/*/text/
+skills/*/examples/*/preview/
+skills/*/examples/*/research/
+skills/*/examples/*/studio.lock.json
+skills/*/examples/*/README.md

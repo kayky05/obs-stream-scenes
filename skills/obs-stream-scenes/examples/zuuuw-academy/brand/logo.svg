@@ -1,0 +1,11 @@
+<svg viewBox="0 0 404 78" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="Zuuuw">
+  <g stroke-width="13" stroke-linecap="round" stroke-linejoin="round" fill="none">
+    <path stroke="#e8d3a6" d="M16 16 H60 L16 61.5 H60" />
+    <g stroke="#eef1f7">
+      <path d="M94 16 V39.5 A22 22 0 0 0 138 39.5 V16" />
+      <path d="M172 16 V39.5 A22 22 0 0 0 216 39.5 V16" />
+      <path d="M250 16 V39.5 A22 22 0 0 0 294 39.5 V16" />
+      <path d="M328 16 V46.5 A15 15 0 0 0 358 46.5 V30 M358 30 V46.5 A15 15 0 0 0 388 46.5 V16" />
+    </g>
+  </g>
+</svg>

@@ -1,0 +1,26 @@
+{
+  "language": "pt-BR",
+  "mode": "stream",
+  "platform": "twitch",
+  "brand": { "name": "NOVAPLAYS", "eyebrow": "Lives de terça a sábado", "site": "twitch.tv/novaplays", "footer_label": "Nova Plays" },
+  "socials": ["twitch.tv/novaplays", "@novaplays"],
+  "colors": { "background": "#0b0b14", "text": "#f2f3ff", "accent": "#00e5ff", "accent_2": "#ff2bd6" },
+  "fonts": { "sans": "Rubik", "display": "Chakra Petch", "display_weight": 700, "mono": "JetBrains Mono" },
+  "texts": { "title": "Rankeada até o Diamante", "react": "Reagindo a: trailer novo do GTA" },
+  "sources": {
+    "chat": { "type": "browser", "url": "https://www.twitch.tv/popout/novaplays/chat?popout=" },
+    "camera2": { "type": "camera" }
+  },
+  "scenes": [
+    { "id": "starting", "name": "Começando", "preset": "starting", "countdown_min": 5, "hotkey": "Ctrl+Alt+1" },
+    { "id": "game", "name": "Gameplay", "preset": "gameplay", "hotkey": "Ctrl+Alt+2" },
+    { "id": "game-chat", "name": "Gameplay + chat", "preset": "gameplay_framed", "hotkey": "Ctrl+Alt+3" },
+    { "id": "react", "name": "React", "preset": "react", "hotkey": "Ctrl+Alt+4" },
+    { "id": "react-full", "name": "React tela cheia", "preset": "react_pip", "hotkey": "Ctrl+Alt+5" },
+    { "id": "chatting", "name": "Conversa", "preset": "just_chatting", "hotkey": "Ctrl+Alt+6" },
+    { "id": "podcast", "name": "Podcast", "preset": "side_by_side", "left": "camera", "right": "camera2", "hotkey": "Ctrl+Alt+7" },
+    { "id": "brb", "name": "Já volto", "preset": "brb", "hotkey": "Ctrl+Alt+8" },
+    { "id": "ending", "name": "Encerramento", "preset": "ending", "hotkey": "Ctrl+Alt+9" }
+  ],
+  "hotkeys": { "record": "Ctrl+Alt+R", "stream": "Ctrl+Alt+S" }
+}
